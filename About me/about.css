@@ -1,0 +1,405 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   HEADER / ABOUT ME
+   ========================= */
+
+header {
+    min-height: 100vh;
+    padding-top: 20px;
+
+    background: linear-gradient(
+        to bottom,
+        black,
+        rgb(162, 109, 118),
+        pink
+    );
+
+    color: white;
+}
+
+header h1 {
+    font-size: 100px;
+    padding-left: 50px;
+    margin: 0;
+}
+
+header p {
+    font-size: 20px;
+    padding: 10px 30px;
+    margin: 0;
+}
+
+.pp {
+    width: 100%;
+
+    background: linear-gradient(
+        45deg,
+        black,
+        pink
+    );
+}
+
+
+/* =========================
+   COMMON
+   ========================= */
+
+h2,
+h3,
+h4 {
+    margin-top: 0;
+}
+
+
+/* =========================
+   BINGE WATCHING
+   ========================= */
+
+.binge-watching {
+    min-height: 100vh;
+    height: auto;
+    margin: 0;
+    padding-top: 30px;
+
+    background: linear-gradient(
+        to bottom,
+        pink,
+        rgb(240, 141, 157),
+        rgb(255, 83, 112)
+    );
+}
+
+.section-content {
+    width: 100%;
+}
+
+.binge-watching h2 {
+    text-align: center;
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.binge-watching > .section-content > p {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   FAVORITES
+   ========================= */
+
+.favorites {
+    width: 100%;
+    padding: 10px 0;
+}
+
+.favorites h3 {
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 5px;
+}
+
+
+/* =========================
+   MOVIE CAROUSEL
+   ========================= */
+
+.movie-container {
+    width: 100%;
+
+    display: flex;
+    gap: 50px;
+
+    overflow-x: auto;
+
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    padding: 10px calc(50% - 175px);
+
+    scrollbar-width: none;
+}
+
+.movie-container::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Movie Card */
+
+.movie-card {
+    flex: 0 0 350px;
+
+    scroll-snap-align: center;
+
+    text-align: center;
+
+    position: relative;
+
+    transition:
+        transform 0.4s ease,
+        filter 0.4s ease;
+
+    z-index: 1;
+}
+
+
+/* Movie Image */
+
+.movie-card img {
+    width: 350px;
+    height: 500px;
+
+    object-fit: cover;
+
+    border-radius: 15px;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+/* Movie Hover */
+
+.movie-card:hover {
+    transform: scale(1.08);
+    z-index: 5;
+}
+
+.movie-card:hover img {
+    box-shadow:
+        0 0 15px pink,
+        0 0 30px rgb(255, 83, 112),
+        0 0 50px rgba(255, 83, 112, 0.7);
+}
+
+
+/* Movie Name */
+
+.movie-card h4 {
+    font-size: 28px;
+    margin: 18px 0 8px;
+}
+
+
+/* Movie Description */
+
+.movie-card p {
+    font-size: 17px;
+    line-height: 1.5;
+
+    margin: 0 auto;
+
+    max-width: 330px;
+}
+
+
+
+.travelling {
+    min-height: 100vh;
+    height: auto;
+
+    margin: 0;
+    padding-top: 30px;
+
+    background: linear-gradient(
+        to bottom,
+        rgb(255, 83, 112),
+        rgb(180, 90, 120),
+        black
+    );
+}
+
+.travelling h2 {
+    text-align: center;
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.travelling > .section-content > p {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+
+
+.travelling .favorites h3 {
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 5px;
+}
+
+.city-container {
+    width: 100%;
+
+    display: flex;
+    gap: 50px;
+
+    overflow-x: auto;
+
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    padding: 10px calc(50% - 175px);
+
+    scrollbar-width: none;
+}
+
+.city-container::-webkit-scrollbar {
+    display: none;
+}
+
+
+.city-card {
+    flex: 0 0 350px;
+
+    scroll-snap-align: center;
+
+    text-align: center;
+
+    position: relative;
+
+    transition:
+        transform 0.4s ease,
+        filter 0.4s ease;
+
+    z-index: 1;
+}
+
+
+.city-card img {
+    width: 350px;
+    height: 450px;
+
+    object-fit: cover;
+
+    border-radius: 15px;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+
+.city-card:hover {
+    transform: scale(1.08);
+    z-index: 5;
+}
+
+.city-card:hover img {
+    box-shadow:
+        0 0 15px pink,
+        0 0 30px rgb(255, 83, 112),
+        0 0 50px rgba(255, 83, 112, 0.7);
+}
+
+
+
+.city-card h4 {
+    font-size: 28px;
+    margin: 18px 0 8px;
+}
+
+
+
+
+.city-card p {
+    font-size: 17px;
+    line-height: 1.5;
+
+    margin: 0 auto;
+
+    max-width: 330px;
+}
+
+
+
+.universe {
+    min-height: 100vh;
+    height: auto;
+
+    background: black;
+    color: white;
+
+    padding: 50px;
+}
+
+.universe h2 {
+    font-size: 55px;
+}
+
+.universe-interests {
+    display: flex;
+    gap: 30px;
+}
+
+.interest {
+    padding: 30px;
+
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    transition: 0.4s ease;
+}
+
+.interest:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 0 15px pink,
+        0 0 30px rgba(255, 192, 203, 0.6);
+}
+
+
+
+.ending {
+    min-height: 50vh;
+
+    background: linear-gradient(
+        to bottom,
+        black,
+        rgb(162, 109, 118)
+    );
+
+    color: white;
+
+    text-align: center;
+
+    padding: 80px 30px;
+}
+
+.ending h2 {
+    font-size: 50px;
+}
+
+
+
+footer {
+    margin: 0;
+    padding: 20px;
+
+    text-align: center;
+
+    background: rgb(162, 109, 118);
+
+    color: white;
+}

@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body{
+        margin:0;
+    
+    }
+    header{
+        padding-top: 20px;
+        height: 100vh;
+        padding-left: 50px;
+        background-color: black;
+        color: white;
+        margin: 0;
+    }
+    #quote{
+        
+       font-size: 100px;
+       line-height: 1;
+       font-weight: 1000;
+       padding-top: 10px;
+       
+       
+    }
+    #code{
+        font-style: italic;
+        font-weight: 300;
+    }
+
+    .dash {
+    display: inline-block;
+    transform: scaleX(4);
+}
+   .dash2{
+    display: inline-block;
+    transform: scaleX(100);
+   }
+   .dash3{
+    display: inline-block;
+    transform: scaleY(10);
+     color: red;
+   }
+  #name{
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-size: 40px; 
+   }
+   div{
+    line-height: 0.5;
+   }
+    main {
+        margin: 0;
+        min-height: 6000px;
+
+        background: linear-gradient(
+            to bottom,
+            rgb(196, 6, 6) 0%,
+            #800000 20%,
+            #300000 24%,
+            black 40%,
+             #300000 60%,
+              #800000 70%,
+            rgb(196, 6, 6) 100%
+        );
+    }
+    #abt {
+    display: flex;
+    margin: 0;
+    padding: 30px;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+#fix {
+    margin: 0;
+    line-height: 1;
+    width: 50%;
+    height: 100%;
+    color: white;
+    background-color:rgb(58, 53, 53); 
+    border: 5px solid rgb(56, 54, 54);
+    border-radius: 15px;
+    box-sizing: border-box;
+    justify-content: center; /* vertical center */
+    align-items: center;  
+}
+
+#scroll {
+    width: 50%;
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 30px;
+    font-size:30px;
+    line-height: 30px;
+    color: white;
+    opacity: 60%;
+}
+.menu-container {
+    width: fit-content;
+}
+
+/* Hide checkbox */
+#menu-toggle {
+    display: none;
+}
+
+
+/* ---------------- BUTTON ---------------- */
+
+.more-button {
+    height: 60px;
+    padding-right: 30px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    background-color: #222;
+    border-radius: 40px;
+
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* Red circle containing arrow */
+.arrow {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: red;
+    border-radius: 50%;
+
+    font-size: 30px;
+}
+
+
+/* ---------------- MENU ---------------- */
+
+.menu {
+    display: none;
+    width: 770px;
+    height: 60px;
+    padding: 0px 20px 0px 20px;
+
+    align-items: center;
+    gap: 40px;
+
+    background-color: #222;
+    border-radius: 40px;
+}
+.menu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;   
+    margin: 0;           
+    padding: 0;            
+}
+.menu ul li {
+    margin-left: 40px;
+}
+
+/* Links */
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.menu a:hover {
+    color: red;
+}
+
+
+/* ---------------- CLICK EFFECT ---------------- */
+
+/* Hide button */
+#menu-toggle:checked ~ .more-button {
+    display: none;
+}
+
+/* Show menu */
+#menu-toggle:checked ~ .menu {
+    display: flex;
+
+}
+
+
+    .sec{
+
+        height: 150vh;
+        color: white;
+        font-size: 40px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+    #edu{
+        display: flex;
+        align-items: center;
+        padding-left: 100px;
+        gap:90px;
+        padding-top: 55px;
+       
+
+    }
+    .info{
+        font-size: larger;
+    }
+    .skills {
+    
+    display: flex;
+    gap: 50px;
+    padding: 160px 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.skills-title {
+    font-size: 88px;
+    line-height: 1.1;
+    color: transparent;
+    -webkit-text-stroke: 1.5px white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.skills-grid {
+    flex: 1;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    line-height: 2px;
+
+}
+
+.skill-card {
+    height: 270px;
+    border: 2px solid white;
+    border-radius: 15px;
+    color: rgb(255, 198, 198);
+    background-color: #800000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 30px;
+
+    /* Initial state */
+    opacity: 0;
+    transform: translateY(60px);
+
+    /* Scroll animation */
+    animation: appear linear forwards;
+    animation-timeline: view();
+    animation-range: entry 20% cover 40%;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    }
+   
+ #pro{
+    font-size: 100px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: transparent;
+    -webkit-text-stroke: 1px white;
+ }
+ .project-container {
+    width: 90%;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.project-card {
+    width: 100%;
+    min-height: 300px;
+
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+    color: white;
+    background-color:rgba(195, 24, 24, 0.53) ;
+    
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    padding: 20px;
+    box-sizing: border-box;
+
+     animation: projectAppear linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 45%;
+}
+ @keyframes projectAppear {
+    from{
+        opacity: 0;
+        transform : translateY(80px);
+    }
+ 
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    
+ }
+.project-card:hover{
+    background-color: rgb(153, 42, 42);
+     box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    transform: translateY(-20px);
+}
+
+.project-card img {
+    width: 210px;
+    height: 210px;
+    object-fit: cover;
+
+    border-radius: 15px;
+}
+
+.project-info {
+    padding: 0 40px;
+}
+
+.project-info h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.project-info p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.project-info span {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 18px;
+}
+.touch{ min-height: 100vh;
+    padding: 80px 10%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+#cm{
+   font-size:45px;
+}
+footer{
+    font-size: 30px;
+}
+ button {
+      --glow-color: rgb(253, 117, 83);
+      --glow-spread-color: rgba(248, 58, 58, 0.781);
+      --enhanced-glow-color: rgb(253, 117, 83);
+      --btn-color: rgba(248, 58, 58, 0.781);
+      border: 0.25em solid var(--glow-color);
+      padding: 1em 3em;
+      color: var(--glow-color);
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      background-color: var(--btn-color);
+      border-radius: 1em;
+      outline: none;
+      box-shadow: 0 0 1em 0.25em var(--glow-color),
+        0 0 4em 1em var(--glow-spread-color),
+        inset 0 0 0.74em 0.25em var(--glow-color);
+      text-shadow: 0 0 0.5em var(--glow-color);
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    button::after {
+      pointer-events: none;
+      content: "";
+      position: absolute;
+      top: 120%;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: var(--glow-spread-color);
+      filter: blur(2em);
+      opacity: 0.7;
+      transform: perspective(1.5em) rotateX(35deg) scale(1, 0.6);
+    }
+
+    button:hover {
+      color: var(--btn-color);
+      background-color: var(--glow-color);
+      box-shadow: 0 0 1em 0.25em var(--glow-color),
+      0 0 4em 2em var(--glow-spread-color),
+      inset 0 0 0.75em 0.25em var(--glow-color);
+    }
+
+    button:active {
+      box-shadow: 0 0 0.6em 0.25em var(--glow-color),
+      0 0 2.5em 2em var(--glow-spread-color),
+      inset 0 0 0.5em 0.25em var(--glow-color);
+    }
+  /*
+   GLOWING 3D CUBE
+*/
+
+#neonCubeBox {
+    --glow-color: rgb(217, 176, 255);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    --enhanced-glow-color: rgb(231, 206, 255);
+
+    position: absolute;
+
+    /* POSITION */
+    right: 12%;
+    top: 50%;
+
+    /* Don't let positioning affect the cube's rotation */
+    transform: translateY(-50%);
+
+    width: 350px;
+    height: 350px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    perspective: 1000px;
+
+    cursor: pointer;
+
+    filter:
+        drop-shadow(0 0 8px var(--glow-color))
+        drop-shadow(0 0 25px var(--glow-spread-color));
+
+    transition: filter 0.3s ease;
+}
+
+
+/* =========================
+   3D CUBE
+========================= */
+
+#neonCube {
+    width: 300px;
+    height: 300px;
+
+    position: relative;
+
+    transform-style: preserve-3d !important;
+
+    transform:
+        rotateX(-25deg)
+        rotateY(-35deg);
+
+    transition: transform 0.3s ease;
+}
+
+
+/* =========================
+   FACES
+========================= */
+
+#neonCube .nc-face {
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    left: 0;
+    top: 0;
+
+    box-sizing: border-box;
+
+    background: rgba(81, 34, 114, 0.75);
+
+    border: 2px solid var(--glow-color);
+
+    box-shadow:
+        inset 0 0 10px var(--glow-color),
+        0 0 8px var(--glow-color);
+
+    backface-visibility: visible;
+}
+
+
+/* FRONT */
+
+#neonCube .nc-front {
+    transform: translateZ(150px);
+}
+
+
+/* RIGHT */
+
+#neonCube .nc-right {
+    transform:
+        rotateY(90deg)
+        translateZ(150px);
+}
+
+
+/* TOP */
+
+#neonCube .nc-top {
+    transform:
+        rotateX(90deg)
+        translateZ(150px);
+}
+
+
+/* =========================
+   HOVER
+========================= */
+
+#neonCubeBox:hover {
+    filter:
+        drop-shadow(0 0 8px var(--enhanced-glow-color))
+        drop-shadow(0 0 20px var(--glow-color))
+        drop-shadow(0 0 45px var(--glow-spread-color))
+        drop-shadow(0 0 80px rgba(255, 123, 165, 0.6));
+
+    animation: cubeGlow 1.2s infinite alternate;
+}
+
+
+#neonCubeBox:hover #neonCube {
+    transform:
+        rotateX(-25deg)
+        rotateY(-35deg)
+        scale(1.15);
+}
+
+
+/* BRIGHTER FACES */
+
+#neonCubeBox:hover .nc-face {
+    background: rgb(166, 61, 61);
+
+    border-color: var(--enhanced-glow-color);
+
+    box-shadow:
+        inset 0 0 15px var(--glow-color),
+        inset 0 0 30px rgba(255, 123, 123, 0.5),
+        0 0 10px var(--glow-color),
+        0 0 25px var(--glow-spread-color);
+}
+
+
+/* =========================
+   PULSING GLOW
+========================= */
+
+@keyframes cubeGlow {
+
+    from {
+        filter:
+            drop-shadow(0 0 5px var(--glow-color))
+            drop-shadow(0 0 20px var(--glow-spread-color));
+    }
+
+    to {
+        filter:
+            drop-shadow(0 0 10px rgb(250, 244, 244))
+            drop-shadow(0 0 30px var(--glow-color))
+            drop-shadow(0 0 65px var(--glow-spread-color))
+            drop-shadow(0 0 100px rgba(225, 13, 13, 0.5));
+    }
+}
+
+
+/* CLICK */
+
+#neonCubeBox:active #neonCube {
+    transform:
+        rotateX(-25deg)
+        rotateY(-35deg)
+        scale(0.95);
+}
+.hero{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.hero-content{
+    width:55%;
+}
+</style>
+</head>
+
+<body>
+    <header>
+        <h1 id="quote"><span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Where creativity <br>meets </span><span id="code" style="color: red;">code.</span></h1>
+        <div>
+    
+    <h1 id="name"><span class="dash" style="color: red;">-</span> &nbsp;Hi, I'm Shikha</h1>
+    <p style="font-weight: 200;font-size: 22px;color: rgb(230, 197, 197); opacity: 80%;"> &nbsp;&nbsp;&nbsp;Java developer | &nbsp;&nbsp;&nbsp;UI/UX designer |  &nbsp;&nbsp;&nbsp;and yes, a <span style="color: red;">CREATIVE MIND.</span></p>
+    </div>
+    <br>
+    <div style="line-height: 1;">
+    <p style="font-weight: 200;font-size: 22px;color: rgb(230, 197, 197); opacity: 80%;font-size:18px;padding: 20px;">HOVER ON THE CUBE TO SEE SOME MAGIC</p>
+    <h2><span class="dash2" style="color: red;padding-left: 7px;">-</span></h2>
+    </div>
+
+    <div class="menu-container">
+
+    <input type="checkbox" id="menu-toggle">
+
+    <label for="menu-toggle" class="more-button">
+        <span class="arrow">→</span>
+        <span>CLICK FOR MENU</span>
+    </label>
+
+    <nav class="menu">
+    <ul>
+         <span class="arrow">→</span>
+      <li><a href="#edu">Education</a></li>
+      <li><a href="#skill">Skills</a></li>
+      <li><a href="">Internships</a></li>
+      <li><a href="#ps">Projects</a></li>
+      <li><a href="#client">Contact me</a></li>
+      <li ><a href="#admin" onClick="showAdmin()">Admin Login</a></li>
+    </ul>
+
+</div>
+    <section class="hero">
+    <div id="neonCubeBox">
+    <div id="neonCube">
+
+        <div class="nc-face nc-front"></div>
+        <div class="nc-face nc-right"></div>
+        <div class="nc-face nc-top"></div>
+
+    </div>
+</div>
+</section>
+    
+      </header>
+<main>
+
+    <section id="abt">
+        <div id="fix">
+        <H2 style="font-size: 50px; padding-left:200px; color: transparent;
+    -webkit-text-stroke: 1px white;">ABOUT ME</H2>
+         <img style="padding-left: 100px;border-radius: 15px;" src="https://img.magnific.com/premium-vector/software-developer-vector-illustration-communication-technology-cyber-security_1249867-5464.jpg?semt=ais_hybrid&w=740&q=80" height="500" width="500">
+        </div>
+        <div id="scroll" style="margin: 0;">
+           <p style="padding-left: 40px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+    I'm a Computer Science student, developer, and creative thinker who believes
+    that coding is more than just writing lines of code — it's a way of bringing
+    ideas to life. I code with creativity, build webpages with heart, and love
+    turning simple ideas into experiences that feel unique and meaningful.
+    <br><br>
+
+    I'm currently exploring the world of Java, web development, and UI/UX,
+    constantly learning new technologies and finding better ways to create.
+    I enjoy experimenting with designs, playing with interactions, and paying
+    attention to the little details that can turn an ordinary webpage into
+    something memorable.
+   <br><br>
+    For me, development is a balance between logic and imagination. I love
+    solving problems, learning from what doesn't work, and challenging myself
+    to build something a little better every time. I'm still growing, still
+    experimenting, and definitely still figuring things out — but that's what
+    makes the journey exciting.
+  <br><br>
+    I don't just want to write code that works. I want to create things that
+    people enjoy experiencing.
+</p>
+        </div>
+    </section>
+<br>
+<br>
+
+<section id="edu">
+    <div id="ee">
+    <h2 style="padding-left: 30px;padding-top: 10px;font-size: 55px;"><span class="dash" style="color: red;">-</span> &nbsp;Education</h2>
+    
+      </div>
+      <p><span class="dash3">|</span></p>
+      <div class="info">
+    <h3>GLA University</h3>
+    <p>Btech CSE</p>
+    <p>2029</p>
+    </div>
+    <span class="dash3"><p>|</p></span>
+    <div class="info">
+    <h3>SQ Mary's School</h3>
+    <p>Non Med</p>
+    <p>2024</p>
+    </div>
+     </section> 
+
+
+   <section id="skill" class="skills">
+    <div class="skills-title">
+        S<br>
+        K<br>
+        I<br>
+        L<br>
+        L<br>
+        S
+    </div>
+
+    <div class="skills-grid">
+        <div class="skill-card"><div class="box">HTML</div></div>
+        <div class="skill-card"><div class="box">CSS</div></div>
+        <div class="skill-card"><div class="box">JavaScript</div></div>
+        <div class="skill-card"><div class="box">Java</div></div>
+        <div class="skill-card"><div class="box">SQL</div></div>
+        <div class="skill-card"><div class="box">Git</div></div>
+    </div>
+</section>
+<br>
+<section id="ps" class="project">
+    
+    <marquee direction="right" scrollamount="10"><span id="pro">PROJECTS</span></marquee>
+    <hr>
+     <marquee direction="left" scrollamount="10"><span id="pro">PROJECTS</span></marquee>
+    <div class="project-container">
+
+        <!-- Project 1 -->
+        <a href="React_Like_Cards_One_Page_Submission.pptx" target="_blank" class="project-card">
+
+            <img src="images/like.png" alt="Project 1" width="300px" height="300px">
+
+            <div class="project-info">
+                <h2>LIKE CARD APP</h2>
+
+                <p>
+                   A like card web app built using React in CodeSandbox, allowing users to interact with cards by liking and unliking them. The project demonstrates React components, state management, event handling, and dynamic UI updates.
+                </p>
+
+                <span>View Project →</span>
+            </div>
+
+        </a>
+
+
+        <!-- Project 2 -->
+        <a href="React_Contact_Cards_One_Page_Fitted.pptx" target="_blank" class="project-card">
+
+            <img src="images/contact.png" alt="Project 2" width="300px" height="300px">
+
+            <div class="project-info">
+                <h2>CONTACT APP</h2>
+
+                <p>
+                   A contact management app built using React that allows users to add, store, and display contact information as organized contact cards. The project demonstrates React components, state management, and dynamic rendering to create an interactive and user-friendly interface.
+                </p>
+
+                <span>View Project →</span>
+            </div>
+
+        </a>
+
+
+        <!-- Project 3 -->
+        <a href="Portfolio_Page_One_Page_Submission.pptx" target="_blank" class="project-card">
+
+            <img src="images/pff.jpg" alt="Project 3" width="300px" height="300px">
+
+            <div class="project-info">
+                <h2>PORTFOLIO</h2>
+
+                <p>
+                   A personal portfolio website created using HTML, CSS, and JavaScript in CodePen, featuring a creative hero section, about section, projects, interactive animations, and a modern responsive design. The project showcases my skills, creativity, and interest in web development and UI/UX design.
+                </p>
+
+                <span>View Project →</span>
+            </div>
+
+        </a>
+
+         <a href="meesho.html" target="_blank" class="project-card">
+
+            <img src="images/mees.png" alt="Project 3" width="300px" height="300px">
+
+            <div class="project-info">
+                <h2 >MEESHO CLONE</h2>
+
+                <p>
+                   A Meesho-inspired e-commerce webpage built using HTML and CSS, featuring a clean product-focused layout, navigation bar, search section, categories, product cards, and responsive styling. The project focuses on recreating the visual design and user experience of an online shopping platform using pure frontend technologies.
+                </p>
+
+                <span>View Project →</span>
+            </div>
+
+        </a>
+
+    </div>
+   
+</section>
+<br><br>
+
+<section id="client" class="touch">
+    <form id="cm">
+      <hr color="red">
+      <h2 id="con" style="text-align: center;color: white;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size: 60px; line-height: 1;">GET IN <BR> <span style="color: red;">TOUCH</span></h2>
+        <div>
+      <div style="line-height: 1;">
+      <label>name</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input id="c" type="text" size="50px"  required>
+      </div>
+      <div >
+        <label>Email</label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <input id="c" type="email" size="50px" required>
+      </div>
+      <div style="padding-top: 10px;">
+        <label>message</label>
+        <textarea id="mm" cols="70" rows="5"></textarea>
+      </div>
+      </div>
+      <br>
+     <!-- <input type="button" value="send"> -->
+      <button type="submit">Send</button>
+    </form>
+  </section>
+  <hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer>
+     <center> made with ❤️ by Shikha | © 2029</center>
+</footer>
+</main>
+</body>
+</html>
