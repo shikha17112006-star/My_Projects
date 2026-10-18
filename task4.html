@@ -1,0 +1,587 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Space Explorer</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: rgb(10, 10, 60);
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow-x: hidden;
+        }
+
+
+        /* NAVBAR - YOUR ORIGINAL DESIGN */
+
+        header {
+            position: fixed;
+            height: 60px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        #first {
+            color: white;
+            font-size: larger;
+            margin-left: 20px;
+        }
+
+        header ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 10px;
+        }
+
+        header li a {
+            text-decoration: none;
+            color: rgb(192, 182, 182);
+            padding: 20px;
+            font-size: large;
+            transition: color 0.3s ease,
+                        transform 0.3s ease;
+        }
+
+        header li a:hover {
+            color: rgb(169, 169, 255);
+        }
+
+
+        #menu-toggle {
+           
+            display: none;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
+            margin-right: 20px;
+            user-select: none;
+        }
+        #second {
+            min-height: 100vh;
+            padding: 100px 20px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            scroll-margin-top: 60px;
+        }
+
+        #second h1 {
+            color: rgb(187, 187, 224);
+            font-size: 60px;
+            margin-bottom: 10px;
+            animation: appear 1.2s ease;
+        }
+        #second p {
+            color: rgb(187, 187, 224);
+            font-size: 22px;
+            line-height: 1.6;
+            animation: appear 1.5s ease;
+        }
+
+
+        .explore-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #7777ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+
+            transition: background-color 0.3s ease,
+                        transform 0.3s ease,
+                        box-shadow 0.3s ease;
+        }
+        .explore-btn:hover {
+            background-color: #5555dd;
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px #7777ff;
+        }
+
+        .space-animation {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            height: 200px;
+            margin-top: 25px;
+        }
+        .spaceship {
+            position: absolute;
+            left: 5%;
+            top: 35px;
+            font-size: 50px;
+
+            animation: fly 5s ease-in-out infinite alternate;
+        }
+        @keyframes fly {
+            from {
+                transform: translateX(0) rotate(-10deg);
+            }
+
+            to {
+                transform: translateX(180px) rotate(10deg);
+            }
+        }
+        .planet {
+            position: absolute;
+            left: 45%;
+            top: 70px;
+            font-size: 45px;
+
+            animation: rotate 4s linear infinite;
+        }
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        .astronaut {
+            position: absolute;
+            right: 8%;
+            top: 25px;
+            font-size: 50px;
+
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+
+
+            50% {
+                transform: translateY(-25px) rotate(5deg);
+            }
+        }
+
+        @keyframes appear {
+
+            from {
+
+                opacity:0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        #missions {
+            padding: 80px 25px;
+            text-align: center;
+            scroll-margin-top: 60px;
+        }
+        #missions h2,
+        #about h2,
+        #contact h2 {
+            color: rgb(187, 187, 224);
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+        .section-description {
+            color: rgb(187, 187, 224);
+            font-size: 18px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .card {
+            background-color: rgb(24, 24, 85);
+            border: 1px solid rgb(75, 75, 140);
+            border-radius: 15px;
+            padding: 35px 22px;
+
+            transition: transform 0.4s ease,
+                        box-shadow 0.4s ease,
+                        border-color 0.4s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px rgba(130, 130, 255, 0.35);
+            border-color: rgb(169, 169, 255);
+        }
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            color: rgb(187, 187, 255);
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+
+
+        .card p {
+            color: rgb(205, 205, 225);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        #about {
+            background-color: rgba(0, 0, 25, 0.35);
+            padding: 80px 25px;
+            text-align: center;
+            scroll-margin-top: 60px;
+        }
+
+
+
+        #about p {
+            color: rgb(205, 205, 225);
+            font-size: 18px;
+            line-height: 1.9;
+            max-width: 850px;
+            margin: auto;
+        }
+        #contact {
+            padding: 80px 25px;
+            text-align: center;
+            scroll-margin-top: 60px;
+        }
+
+        #contact p {
+            color: rgb(205, 205, 225);
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+
+        footer {
+            background-color: black;
+            text-align: center;
+            padding: 22px 15px;
+            color: rgb(192, 182, 182);
+            font-size: 14px;
+        }
+
+
+        @media (max-width: 800px) {
+
+            .card-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            #second h1 {
+                font-size: 45px;
+            }
+
+            #second p {
+
+                font-size : 19px;
+            }
+
+        }
+        @media (max-width: 600px) {
+            header {
+                height: 60px;
+                flex-wrap: wrap;
+            }
+
+            #first {
+                margin-left: 15px;
+                font-size: medium;
+            }
+            .menu-icon {
+                display: block;
+            }
+            header ul {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                margin: 0;
+                padding: 15px 20px;
+
+                background-color: black;
+
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            #menu-toggle:checked ~ #nav-links {
+                display: flex;
+            }
+            header ul li {
+                margin: 12px 0;
+            }
+            header li a {
+                padding: 8px 0;
+                font-size: 17px;
+            }
+
+
+            #second {
+                padding: 120px 18px 40px;
+                min-height: 100vh;
+            }
+            #second h1 {
+                font-size: 36px;
+                line-height: 1.3;
+            }
+
+
+            #second p {
+                font-size: 16px;
+                line-height: 1.7;
+            }
+            .space-animation {
+                height: 150px;
+                margin-top: 30px;
+            }
+            .spaceship {
+                font-size: 35px;
+                top: 30px;
+            }
+            .planet {
+                font-size: 32px;
+                top: 60px;
+            }
+            .astronaut {
+                font-size: 38px;
+                top: 20px;
+            }
+
+            @keyframes fly {
+                from {
+                    transform: translateX(0) rotate(-10deg);
+                }
+
+                to {
+                    transform: translateX(70px) rotate(10deg);
+                }
+            }
+            #missions {
+                padding: 60px 18px;
+            }
+
+            #missions h2,
+            #about h2,
+            #contact h2 {
+                font-size: 29px;
+            }
+
+            .section-description {
+                font-size: 16px;
+            }
+
+            .card-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .card {
+                padding: 28px 20px;
+            }
+            #about,
+            #contact {
+                padding: 60px 20px;
+            }
+
+            #about p,
+            #contact p {
+                font-size: 16px;
+            }
+
+        }
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+    <header>
+
+        <div id="first">
+            <h2>Space Explorer</h2>
+        </div>
+
+        <input type="checkbox" id="menu-toggle">
+
+        <label for="menu-toggle" class="menu-icon">
+            ☰
+        </label>
+
+        <ul id="nav-links">
+
+            <li><a href="#home">Home</a></li>
+
+            <li><a href="#about">About</a></li>
+
+            <li><a href="#missions">Missions</a></li>
+
+            <li><a href="#contact">Contact</a></li>
+
+        </ul>
+
+    </header>
+
+    <section id="second">
+
+        <h1 id="home">Explore The Universe</h1>
+
+        <p>
+            Discover planets, stars and galaxies beyond your imagination.
+        </p>
+
+        <a href="#missions" class="explore-btn">
+            Start Exploring
+        </a>
+
+        <div class="space-animation">
+
+            <div class="spaceship">
+                🚀
+            </div>
+
+            <div class="planet">
+                🪐
+            </div>
+
+            <div class="astronaut">
+                👨‍🚀
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="missions">
+
+        <h2>Discover The Cosmos</h2>
+
+        <p class="section-description">
+            Explore the wonders and mysteries of our universe.
+        </p>
+
+        <div class="card-container">
+            <div class="card">
+
+                <div class="card-icon">🛰️</div>
+
+                <h3>Space Missions</h3>
+
+                <p>
+                    Discover satellites, space missions, and humanity's
+                    incredible journey beyond Earth.
+                </p>
+
+            </div>
+            <div class="card">
+
+                <div class="card-icon">🌌</div>
+
+                <h3>Deep Space</h3>
+
+                <p>
+                    Explore distant galaxies, mysterious black holes,
+                    nebulae, and billions of stars.
+                </p>
+
+            </div>
+            <div class="card">
+
+                <div class="card-icon">✨</div>
+
+                <h3>Interesting Facts</h3>
+
+                <p>
+                    Learn fascinating facts about planets, astronauts,
+                    stars, and the mysteries of our universe.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+    <section id="about">
+
+        <h2>About Space Explorer</h2>
+
+        <p>
+            Space Explorer is your gateway to discovering the universe.
+            From the planets of our solar system to distant galaxies,
+            explore the science, technology, and discoveries that help
+            us understand the cosmos.
+        </p>
+
+    </section>
+
+    <section id="contact">
+
+        <h2>Ready For Your Journey?</h2>
+
+           <p>
+            Keep exploring. Keep discovering. The universe awaits! </p>
+
+        <a href="#home" class="explore-btn">
+            Back To Top ↑
+        </a>
+
+    </section>
+
+
+    <footer>
+
+        <p>
+            © 2026 Space Explorer | Explore Beyond The Stars 🚀
+        </p>
+
+    </footer>
+</body>
+</html>
